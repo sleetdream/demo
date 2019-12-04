@@ -15,7 +15,7 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public boolean deleteByPrimaryKey(Integer id) {
-        return testMapper.deleteByPrimaryKey(id) == 1 ? true : false;
+        return testMapper.deleteByPrimaryKey(id) >= 1 ? true : false;
     }
 
     @Override

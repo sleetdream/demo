@@ -5,7 +5,7 @@ import com.example.masterslave.enums.DataSourceTypeEnum;
 import java.lang.annotation.*;
 
 /**
- * 使用主库的注解
+ * 注解形式
  */
 @Retention(RetentionPolicy.RUNTIME)//运行时保留
 @Documented//生成到文档中

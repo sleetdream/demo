@@ -1,7 +1,5 @@
 package com.example.masterslave.controller;
 
-import com.example.masterslave.annotation.TargetDataSource;
-import com.example.masterslave.enums.DataSourceTypeEnum;
 import com.example.masterslave.mapper.TestMapper;
 import com.example.masterslave.model.Test;
 import com.example.masterslave.service.TestService;
@@ -19,11 +17,13 @@ public class TestController {
     @Resource
     private TestMapper testMapper;
 
+    //    @TargetDataSource(DataSourceTypeEnum.SLAVE)
     @GetMapping("/get")
     public Object getValue(Integer id){
         return testMapper.selectByPrimaryKey(id);
     }
 
+    //    @TargetDataSource(DataSourceTypeEnum.MASTER)
     @PostMapping("/update")
     public Object postValue(Integer id,String value){
         Test test = new Test();
@@ -32,7 +32,7 @@ public class TestController {
         return testMapper.updateByPrimaryKey(test);
     }
 
-    @TargetDataSource(DataSourceTypeEnum.SLAVE)
+    //    @TargetDataSource(DataSourceTypeEnum.MASTER)
     @PutMapping("/insert")
     public Object putValue(Integer id, String value){
         Test test = new Test();
@@ -41,7 +41,7 @@ public class TestController {
         return testService.insert(test);
     }
 
-    @TargetDataSource(DataSourceTypeEnum.SLAVE)
+    //    @TargetDataSource(DataSourceTypeEnum.MASTER)
     @DeleteMapping("/delete")
     public Object deleteValue(Integer id){
         return testService.deleteByPrimaryKey(id);

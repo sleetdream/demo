@@ -10,11 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
-/**
- * @Description:
- * @Author: caosc
- * @CreateDate: 2019/9/20 18:27
- */
+
 @Configuration
 @MapperScan(basePackages = "com.example.masterslave.mapper", sqlSessionTemplateRef  = "businessSqlSessionTemplate")
 public class DBBusinessConfig {

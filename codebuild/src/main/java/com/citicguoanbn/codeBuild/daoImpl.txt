@@ -1,0 +1,27 @@
+package {PACKAGENAME}.dao.impl;
+
+import com.zd.dao.{CLASSNAME}Dao;
+import {PACKAGENAME}.entity.{CLASSNAME};
+
+/**
+ * @function 功能:{FUNNAME} dao层业务接口
+ * @author   创建人:{AUTHOR}
+ * @date     创建日期:{DATE}
+ */
+public class {CLASSNAME}DaoImpl extends BaseDaoImpl<{CLASSNAME}> implements {CLASSNAME}Dao{
+	public {CLASSNAME}DaoImpl() {
+		super({CLASSNAME}.class);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

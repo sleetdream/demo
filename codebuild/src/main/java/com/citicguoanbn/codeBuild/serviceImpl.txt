@@ -1,0 +1,27 @@
+package {PACKAGENAME}.service.{FUNNAME}.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.citicguoanbn.mapper.IBaseMapper;
+import com.citicguoanbn.service.BaseServiceImpl;
+import {PACKAGENAME}.mapper.{FUNNAME}.{CLASSNAME}DOMapper;
+import {PACKAGENAME}.po.{FUNNAME}.{CLASSNAME}DO;
+import {PACKAGENAME}.service.{FUNNAME}.{CLASSNAME}Service;
+
+/**
+ * @function 功能 : {FUNNAME} Service层业务实现
+ * @author   创建人:{AUTHOR}
+ * @date     创建日期:{DATE}
+ */
+@Service
+public class {CLASSNAME}ServiceImpl extends BaseServiceImpl<{CLASSNAME}DO> implements {CLASSNAME}Service{
+
+    @Autowired
+    private {CLASSNAME}DOMapper mapper;
+
+    @Override
+    protected IBaseMapper<{CLASSNAME}DO> getBaseDao() {
+        return mapper;
+    }
+
+}

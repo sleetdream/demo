@@ -1,0 +1,26 @@
+package {PACKAGENAME}.mapper.{FUNNAME};
+
+import {PACKAGENAME}.po.{FUNNAME}.{CLASSNAME}DO;
+import com.citicguoanbn.mapper.IBaseMapper;
+
+/**
+ * @function 功能:{FUNNAME} dao层业务接口
+ * @author   创建人:{AUTHOR}
+ * @date     创建日期:{DATE}
+ */
+@Repository
+public interface {CLASSNAME}DOMapper extends IBaseMapper<{CLASSNAME}DO>{
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+

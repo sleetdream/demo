@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("demo")
-public class demoController extends BaseController<TestDO>{
+public class DemoController extends BaseController<TestDO>{
 
     @Autowired
     private TestService testService;

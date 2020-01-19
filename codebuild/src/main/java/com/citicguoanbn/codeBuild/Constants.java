@@ -21,7 +21,7 @@ public class Constants {
 	public static final int minIdle = 10;
 	public static final int maxActive = 100;
 
-	public static final String url = "jdbc:mysql://localhost:3306/test??useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true";
+	public static final String url = "jdbc:mysql://172.18.86.37:3306/demo??useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true";
 	public static final String username = "root";
-	public static final String password = "123456";
+	public static final String password = "root";
 }

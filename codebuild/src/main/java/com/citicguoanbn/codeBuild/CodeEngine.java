@@ -11,14 +11,14 @@ import java.util.HashMap;
  * date:2018-05-08
  */																																																																																																																																																																																																																																																																																																																																																																																						
 public class CodeEngine {
-	private static final String PACKAGENAME = "com.founder.apabi";
-	private static final String PATHNAME = "com/founder/apabi";
-	private static final String SERVICEAPPNAME="csc";//service项目名,以及模板文件所在项目名
+	private static final String PACKAGENAME = "com.example.applycore";
+	private static final String PATHNAME = "com/example/applycore";
+	private static final String SERVICEAPPNAME="applycore";//service项目名,以及模板文件所在项目名
 	private static final String CLIENTAPPRNAME="";//client项目名
 	
 	//数据库表名
-	private static final String TABLENAME = "sys_user";
-	private static final String TABLESCHEMA = "test";//
+	private static final String TABLENAME = "test";
+	private static final String TABLESCHEMA = "demo";//
 	private static final String TABLEKEY = "id";   //表主键
 	
 	private String INDEXDISFIELD = ""; //列表显示字段
@@ -27,7 +27,7 @@ public class CodeEngine {
 	private static final String FUNCPATH = "";
 	
 	//功能名称
-	private static final String AUTHOR = "caoshichuan";
+	private static final String AUTHOR = "sleetdream";
 
 	public static final String SRC_PATH = "src/main/java/";  //src根目录
 	public static final String ROOT_SAVEPATH = SRC_PATH+PATHNAME; //源码根目录

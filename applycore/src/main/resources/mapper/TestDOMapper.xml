@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.example.applycore.mapper.TestDOMapper">
+    <resultMap id="BaseResultMap" type="com.example.applycore.po.TestDO">
+      <!--resultMap生成后删除一个result ID-->
+      <result  column="id" javaType="Integer" jdbcType="INTEGER" property="id"/>
+      <result  column="value" javaType="String" jdbcType="VARCHAR" property="value"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+       id,value
+    </sql>
+	
+    <sql id="_where">
+        <where>
+            1=1
+            <if test="id != null ">
+                and id = #{id}
+            </if>
+            <if test="value != null and value != ''">
+                and value = #{value}
+            </if>
+        </where>
+    </sql>
+
+    <select id="getOne"  parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List" />
+        from
+            test
+        <include refid="_where"/> LIMIT 1
+    </select>
+
+    <select id="getByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List" />
+        from
+            test
+        where
+            id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="listByParams"  parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List" />
+        from
+            test
+        <include refid="_where"/>
+      </select>
+
+    <select id="listAll" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List" />
+        from
+            test
+    </select>
+
+    <!--listPage 方法未找到-->
+
+    <select id="count" resultType="java.lang.Integer">
+        select count(id) from test <include refid="_where"/>
+    </select>
+
+    <insert id="insert" parameterType="com.example.applycore.po.TestDO">
+        <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+          SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into
+            test ( <include refid="Base_Column_List" /> )
+        values (
+            #{id,jdbcType=INTEGER},#{value,jdbcType=VARCHAR},
+        )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.example.applycore.po.TestDO">
+        insert test
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            
+                <if test="id != null">id,</if>
+            
+                <if test="value != null">value,</if>
+            
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            
+                <if test="id != null">#{id,jdbcType=INTEGER},</if>
+            
+                <if test="value != null">#{value,jdbcType=VARCHAR},</if>
+            
+        </trim>
+      </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from test where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <update id="deleteByIdFalse" parameterType="java.lang.Long">
+        update test set status = 0 where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.example.applycore.po.TestDO">
+        UPDATE test SET value=#{value}, WHERE id=#{id}
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.applycore.po.TestDO">
+        update test
+        <set>
+            
+                <if test="id != null">
+                    id = #{id,jdbcType=INTEGER},
+                </if>
+            
+                <if test="value != null">
+                    value = #{value,jdbcType=VARCHAR},
+                </if>
+            
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <insert id="addInBatch" parameterType="java.util.List">
+        insert into
+            test (<include refid="Base_Column_List" />)
+        values
+            <foreach collection="list" item="item" index="index" open=""  separator=","  close="">
+                (
+                  
+                      #{item.id,jdbcType=INTEGER},
+                  
+                      #{item.value,jdbcType=VARCHAR},
+                  
+                )
+            </foreach>
+    </insert>
+
+    <update id="updateInBatch" parameterType="java.util.List">
+        update test
+        <set>
+            
+                id =
+                <foreach collection="list" item="item" index="index"
+                         separator=" " open="case ID" close="end,">
+                  WHEN  #{item.id} THEN #{item.id,jdbcType=INTEGER}
+                </foreach>
+            
+                value =
+                <foreach collection="list" item="item" index="index"
+                         separator=" " open="case ID" close="end,">
+                  WHEN  #{item.id} THEN #{item.value,jdbcType=VARCHAR}
+                </foreach>
+            
+        </set>
+        where id in
+        <foreach collection="list" index="index" item="item"  separator="," open="(" close=")">
+          #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+
+    <update id="deleteByPrimaryKeyInBatch" parameterType="java.util.List">
+        update test set status = 0
+        where id in
+        <foreach collection="list" index="index" item="item"  separator="," open="(" close=")">
+          #{item,jdbcType=BIGINT}
+        </foreach>
+    </update>
+
+	<!-- 其他SQL写在此下方, 注意重新生成时会覆盖 -->
+	
+</mapper>
+

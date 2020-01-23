@@ -97,7 +97,7 @@ public class CustomerRabbitListener {
              * multiple：是否批量.true:将一次性拒绝所有小于deliveryTag的消息。
              * requeue：被拒绝的是否重新入队列
              */
-            channel.basicNack(message.getMessageProperties().getDeliveryTag(), false,false);
+            channel.basicNack(message.getMessageProperties().getDeliveryTag(), false,true);
         }
 
     }
